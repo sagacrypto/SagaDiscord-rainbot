@@ -4,28 +4,28 @@ module.exports = {
         "setNewAvatar": false, // Bot does crash if avatar gets changed too often! If you set a new image, set the value to true and the bot sets the new avatar. After change the value back to false!!!!
         "avatar":"./avatar.png", // Set bot avatar img -> local file path
         "gameMessage":"bot game message | +help", // Message under the bot name in the discord user list
-        "adminMode": false, // If enabled the bot only accepts commands from admins
+        "adminMode": true, // If enabled the bot only accepts commands from admins
         "errorLogging": true, // Enable error logging to file discordbot.log
         "commandPrefix": "+", // Bot prefix to trigger the bot <- if symbol changed it needs to get allowed on check.js
         "cooldownTime": 10, // Cooldown a user need to wait between commands in seconds
         "activeUserTime": 600, // Seconds a user counts as active for rain online users
-        "botID": "XXX", // Bot Discord ID - important else it react to own messages 
-        "adminIDs": [ "XXX", "XXX", "XXX" ], // This discrod user IDs are able to use admin commands and bypass cooldowns
+        "botID": "Darksaga Rain Bot", // Bot Discord ID - important else it react to own messages
+        "adminIDs": [ "wreckski", "cryptobuntu"], // This discrod user IDs are able to use admin commands and bypass cooldowns
         "moderatorIDs": [ "XXX" ], // This discrod user IDs are able to use moderator commands and bypass cooldowns
         "vipGroupName": "Dev Team", // Users of this group are able to use vip commands and bypass cooldowns
-        "respondChannelIDs": [ "XXX" ], // Discord server channel IDs the bot does listen to
+        "respondChannelIDs": [ "rainroom" ], // Discord server channel IDs the bot does listen to
         "commandIgnor": ["battle","cversion","destroy","gift","kill","lock","me","rez","top","use","me","cstart","cstop","cstart","jackpot","summary","shop","activate","mention","claim"], // commands to ignor because of other bots
         "stakePoolChannelID": "XXX", // If staking is configured use this channel to broadcast stake pool payouts
         "allowDM": true, // Allow or disable direct messages for commands to the bot with true or false
-        "botToken": "XXX", // Discord bot token
+        "botToken": "ODIxOTQ1Nzg2MTU3MzY3MzM3.YFLGqg.KMIMNgHBoyUALQKt1JGeFvo7gP8", // Discord bot token
         "listUsers": 30, // Define how many users get listed in one message on rain or drop <- Take care about 2200 letters limit from discord
         "dropBotReactIcon":"✅", // If change -> http://twitter.github.io/twemoji/2/test/preview.html -> click icon copy from popup and past it into the string!, // SOME ARE NOT WORKING!! TEST IT BEFORE MAKE IT LIVE
         "dropReactIcon":"🍀", // If change -> http://twitter.github.io/twemoji/2/test/preview.html -> click icon copy from popup and past it into the string!, // SOME ARE NOT WORKING!! TEST IT BEFORE MAKE IT LIVE
         "dropMinSeconds": 10, // Drop message min reply time in seconds
         "dropMaxSeconds": 300, // Drop message max reply time in seconds
         "dropMinUsers": 1, // Users minimum needed for drop
-        "minDropValue": 0.00000001, // Minimum value for drop 
-    }, 
+        "minDropValue": 0.00000001, // Minimum value for drop
+    },
     "mysql":{ // Dont forget to import the empty database before starting the bot
         "dbHost": "XXX", // Database server
         "dbName": "XXX", // Database name
@@ -37,13 +37,13 @@ module.exports = {
     },
     "wallet":{
         "server": "127.0.0.1", // Wallet server
-        "user": "XXX", // Wallet username
-        "password": "XXX", // Wallet password
-        "port": "1234", // Wallet port
+        "user": "username", // Wallet username
+        "password": "password", // Wallet password
+        "port": "62620", // Wallet port
         // TODO ENCRYPTION KEY FOR WALLET
-        "coinSymbol": "Coin (CoinSymbol)", // Coin name
-        "coinSymbolShort": "Symbol", // Coin name
-        "thumbnailIcon": "https://domain.link/image.png", // Thumbnail icon for all messages (need to get enabled first in code to work = not ready)
+        "coinSymbol": "Darksaga (Saga)", // Coin name
+        "coinSymbolShort": "Saga", // Coin name
+        "thumbnailIcon": "https://github.com/sagacrypto/images/blob/master/Logo.png", // Thumbnail icon for all messages (need to get enabled first in code to work = not ready)
         "check": true, // If enabled it checks (cron) for new transactions
         "credit": true, // If enabled it credits (cron) new transactions
         "depositsToCheck": 60, // How many latest deposits should be checked from the wallet
@@ -54,11 +54,11 @@ module.exports = {
         "depositsHistory": 5, // How many deposits get shown on deposit history command !! Max value 7 !!
         "withdrawalsHistoryDisplayCount": 5, // How many withdrawals get shown on withdrawal history command !! Max value 5 !!
         "paymentHistoryCoun": 7, // How many payments get shown on withdrawals payments command !! Max value 7 !!
-        "explorerLinkAddress": "https://explorer.link/#/address/", // Explorer link address for addresses
-        "explorerLinkTransaction": "ttps://explorer.link/#/tx/", // Explorer link transaction
+        "explorerLinkAddress": "http://explorer.darksaga.xyz//#/address/", // Explorer link address for addresses
+        "explorerLinkTransaction": "http://explorer.darksaga.xyz//#/tx/", // Explorer link transaction
         "transactionFee": 0.01, // Fee taken for a transaction a user makes - Change value also on help command
-        "minWithdrawalValue": 0.00000001, // Minimum value for withdrawal
-        "minTipValue": 0.00000001, // Minimum value for tip 
+        "minWithdrawalValue": 1, // Minimum value for withdrawal
+        "minTipValue": 0.1, // Minimum value for tip
         "maxRainRandomUsers": 15, // Please take care as the bot can crash if the value is to big as for each user a database query is fired!
         "donateAddress":"XXX" // Address for donations
     },
@@ -90,7 +90,7 @@ module.exports = {
         "ownerPercentage": 95, // Bot owner percentage // Define how many percente users get from 100%
         "lockTime": 86400, // 24hours = 86400 - Lock time in seconds -> Check if the minimum time between payments and payouts as defined has been respected // Prevent stake pool hopping ;)
         "timezone": "Europe/Berlin" // Used for detect if unstake command can be used or is blocked <- only change if you know what you do! Best value would be same as mysql database time
-    },  
+    },
     "commands": {
         // Enable or disable commands -> true/false
         // Admin commands
@@ -158,7 +158,7 @@ module.exports = {
         },
         "startstop": {
             "enabled":"Bot commands enabled.",
-            "disabled":"Bot commands disabled.", 
+            "disabled":"Bot commands disabled.",
         },
         "log": {
             "registered":"successfully registered.",
@@ -180,7 +180,7 @@ module.exports = {
             "stakecredit1": "- Total stake amount:",
             "stakecredit2": "- Total stake amount minus developer percentage:",
             "stakecredit3": "- Stake user count:",
-            "stakecredit4": "- Stake users:",            
+            "stakecredit4": "- Stake users:",
             "stakecredit5": "- Total stake balance of all users:",
             "stakecredit6": "- Total value for stake users from the total stake amount (totalUserStakeBalance/walletBalance*totalStakeForStakers):",
             "stakecredit7":"- IDs of processing transactions:",
@@ -263,7 +263,7 @@ module.exports = {
             "rainTitle":"+rain all/online/random <amount> <userCount>",
             "rainValue":"(all) Tip amount divided by total user count. / (online) Tip amount divided by active users. / (random) Tip amount divided by random user count.",
             "dropTitle":"+drop phrase/react <amount> <timeInSeconds> <30 letter phrase>",
-            "dropValue":"(phrase) Send coins to all users that reply with the asked phrase. / (react) Send coins to all users that react with the asked icon.", 
+            "dropValue":"(phrase) Send coins to all users that reply with the asked phrase. / (react) Send coins to all users that react with the asked icon.",
             "historyTitle":"+history deposits/withdrawals/payments || +history d/w/p",
             "historyValue":"(deposits) Show your latest deposits. / (withdrawals) Show your latest withdrawals. / (payments) Show your latest payments.",
             "updateTitle":"+update || +u",
